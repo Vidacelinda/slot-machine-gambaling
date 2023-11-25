@@ -1,4 +1,3 @@
-
 // 1.Despot some money 
 // 2.dertermine number of lines to bet on
 // 3.collect a bet amount
@@ -9,6 +8,9 @@
 
 // require package/module and when you call another '()' to give you acces to another function to give you user input
 const prompt =require("prompt-sync")();
+
+
+
 // functon
 const deposit = ()=>{
     while(true){
@@ -27,8 +29,39 @@ const deposit = ()=>{
     }
 };
 
+const getNumberOfLines=()=>{
+    while (true){
+        const lines=prompt("enter number of lines:");
+        const numberOfLines=parseFloat(lines);
+        if(isNaN(numberOfLines)||numberOfLines<=1 || numberOfLines>3){
+            console.log("Invalid number of lines, Try again");
+        }else{
+            return numberOfLines;
+        }
+    }
+};
 
+const getBet=(balance,numberOfLines)=>{
+    while(true){
+        const bet=prompt("enter the total bet:");
+        const numberBet=parseFloat(bet);
+        if(isNaN(numberBet) || numberBet<=0 || numberBet*numberOfLines>balance){
+            console.log("Invalid bet, Try Again");
+        }else{
+            console.log("total for bet with ",numberOfLines,"lines is",numberBet*numberOfLines)
+            return numberBet;
+        }
+    }
+};
 
 // test function
-const depositAmount=deposit();
-console.log(depositAmount)
+
+// let will help adjust the value
+let balance=deposit();
+console.log("balance : ",balance);
+
+const numberOfLines=getNumberOfLines();
+console.log("lines :", numberOfLines);
+
+const bet=getBet(balance,numberOfLines);
+console.log("bet :", bet);

@@ -103,7 +103,7 @@ const spin =()=>{
 const transpose=(reels)=>{
     const rows=[];
     for(let i=0;i<ROWS;i++){
-        // each row add an array
+        //each row add an array
         rows.push([]);
         for(let j=0;j<COLS;j++){
             rows[i].push(reels[j][i])

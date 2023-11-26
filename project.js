@@ -9,6 +9,23 @@
 // require package/module and when you call another '()' to give you acces to another function to give you user input
 const prompt =require("prompt-sync")();
 
+const ROWS=3;
+const COLS=3;
+
+const SYMBOLS_COUNT ={
+    "A":2,
+    "B":4,
+    "C":6,
+    "D":8
+}
+
+const SYMBOLS_VALUES ={
+    "A":5,
+    "B":4,
+    "C":3,
+    "D":2
+}
+
 
 
 // functon
@@ -54,14 +71,41 @@ const getBet=(balance,numberOfLines)=>{
     }
 };
 
-// test function
+const spin =()=>{
+    const symbols=[];
+    // "for loop" loops through all symboles in "STMBOLS_COUNT" (global verable) 
+    // key:value  == symbol:count
+    for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)){
+        // adds to 'symbol' array
+        for(let i=0;i<count;i++){
+            symbols.push(symbol);
+        }
+    }
+    const reel=[[],[],[]];
+    for (let i=0;i<COLS;i++){
+        // copy "symbols" array into another array "realSymbols"
+        const reelSymbols=[...symbols];
+        for (let j=0;j<ROWS;j++){
+            //make random index
+            const randomIndex =Math.floor(Math.random() * reelSymbols.length);
+            //use random index i
+            const selectedSymbol=reelSymbols[randomIndex];
+            // push into reels
+            reels[i].push(selectedSymbol);
+            // remove
+            reelSymbols.splice(randomIndex,1);
+        }
+    }
+}
 
-// let will help adjust the value
+// test function
+console.log(spin())
+console.log(reels);
 let balance=deposit();
 console.log("balance : ",balance);
 
 const numberOfLines=getNumberOfLines();
-console.log("lines :", numberOfLines);
+// console.log("lines :", numberOfLines);
 
 const bet=getBet(balance,numberOfLines);
-console.log("bet :", bet);
+// console.log("bet :", bet);

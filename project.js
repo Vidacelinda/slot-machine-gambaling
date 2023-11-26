@@ -13,17 +13,17 @@ const ROWS=3;
 const COLS=3;
 
 const SYMBOLS_COUNT ={
-    "A":2,
-    "B":4,
-    "C":6,
-    "D":8
+    A:2,
+    B:4,
+    C:6,
+    D:8
 }
 
 const SYMBOLS_VALUES ={
-    "A":5,
-    "B":4,
-    "C":3,
-    "D":2
+    A:5,
+    B:4,
+    C:3,
+    D:2
 }
 
 
@@ -81,7 +81,7 @@ const spin =()=>{
             symbols.push(symbol);
         }
     }
-    const reel=[[],[],[]];
+    const reels=[[],[],[]];
     for (let i=0;i<COLS;i++){
         // copy "symbols" array into another array "realSymbols"
         const reelSymbols=[...symbols];
@@ -96,11 +96,12 @@ const spin =()=>{
             reelSymbols.splice(randomIndex,1);
         }
     }
+    return reels
 }
 
 // test function
 console.log(spin())
-console.log(reels);
+
 let balance=deposit();
 console.log("balance : ",balance);
 

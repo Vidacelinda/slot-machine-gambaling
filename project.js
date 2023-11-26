@@ -99,9 +99,33 @@ const spin =()=>{
     return reels
 }
 
-// test function
-console.log(spin())
+// transpose array
+const transpose=(reels)=>{
+    const rows=[];
+    for(let i=0;i<ROWS;i++){
+        // each row add an array
+        rows.push([]);
+        for(let j=0;j<COLS;j++){
+            rows[i].push(reels[j][i])
+        }
+    }
+    return rows
+}
 
+const printRow=(rows)=>{
+    for(const row of rows){
+        let rowString="";
+        for(const [i,symbol] of row.entries()){
+            rowString+=symbol;
+            if (i!=row.length-1){
+                rowString+=" | ";
+            }
+        }
+        console.log(rowString);
+    }
+}
+
+// test function
 let balance=deposit();
 console.log("balance : ",balance);
 
@@ -110,3 +134,9 @@ const numberOfLines=getNumberOfLines();
 
 const bet=getBet(balance,numberOfLines);
 // console.log("bet :", bet);
+
+const reel=spin();
+// console.log(reel);
+const rows=transpose(reel);
+console.log(rows);
+printRow(rows);

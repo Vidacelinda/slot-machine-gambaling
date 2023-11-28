@@ -1,6 +1,6 @@
 # slot-machine-gambaling
 
-### PARTIALY WORKING 90% Finished
+### PARTIALY WORKING (90% Finished)
 
  1.Despot some money
  
@@ -17,4 +17,6 @@
  7.play again
 
 
- to start program 
+ to start program "node {js project file name}" in terminal
+
+<img width="811" alt="image" src="https://github.com/Vidacelinda/slot-machine-gambaling/assets/87499194/82259034-f758-4a41-8119-95f6c3cedcdc">

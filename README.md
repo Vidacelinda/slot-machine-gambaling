@@ -1,6 +1,6 @@
 # slot-machine-gambaling
 
-## PARTIALY WORKING 90% Finished
+### PARTIALY WORKING 90% Finished
 
  1.Despot some money 
  2.dertermine number of lines to bet on

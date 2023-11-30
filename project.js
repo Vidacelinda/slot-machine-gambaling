@@ -125,6 +125,28 @@ const printRow=(rows)=>{
     }
 }
 
+const getWining(rows,bet,lines)=>{
+    let winings=0;
+    // go through the row
+    for(let row=0;row<lines;row++){
+
+        const symbols=rows[row];
+        let allSame=true;
+
+        for(const symbol of symbols){
+            if(symbol!=symbols[0]){
+                allSame=false;
+                break;
+            }
+        }
+
+        if (allSame){
+            winning+=bet*SYMBOLS_VALUES[symbols[0]]
+        }
+    }
+
+}
+
 // test function
 let balance=deposit();
 console.log("balance : ",balance);

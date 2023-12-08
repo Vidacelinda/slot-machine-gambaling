@@ -125,25 +125,29 @@ const printRow=(rows)=>{
     }
 }
 
-const getWining(rows,bet,lines)=>{
-    let winings=0;
-    // go through the row
+const getWinning=(rows,bet,lines)=>{
+    let winnings=0;
+    // go through the each row 
     for(let row=0;row<lines;row++){
-
+        
         const symbols=rows[row];
         let allSame=true;
-
+        // go through each symbols in a row 
         for(const symbol of symbols){
             if(symbol!=symbols[0]){
                 allSame=false;
                 break;
             }
         }
-
+        // test if won
         if (allSame){
-            winning+=bet*SYMBOLS_VALUES[symbols[0]]
+            // value of the symbols given then multiply by the bet
+            winnings+=bet*SYMBOLS_VALUES[symbols[0]];
+            
         }
     }
+    return winnings;
+    
 
 }
 
@@ -162,3 +166,5 @@ const reel=spin();
 const rows=transpose(reel);
 console.log(rows);
 printRow(rows);
+const winnings=getWinning(rows,bet,numberOfLines)
+console.log("You Won : $",winnings)

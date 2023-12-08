@@ -50,7 +50,7 @@ const getNumberOfLines=()=>{
     while (true){
         const lines=prompt("enter number of lines:");
         const numberOfLines=parseFloat(lines);
-        if(isNaN(numberOfLines)||numberOfLines<=1 || numberOfLines>3){
+        if(isNaN(numberOfLines)||numberOfLines<=0 || numberOfLines>3){
             console.log("Invalid number of lines, Try again");
         }else{
             return numberOfLines;
@@ -151,20 +151,39 @@ const getWinning=(rows,bet,lines)=>{
 
 }
 
-// test function
-let balance=deposit();
-console.log("balance : ",balance);
+const game=()=>{
+    // test function
+    let balance=deposit();
+    console.log("balance : ",balance);
+    loop=true
+    while (true) {
+        
+        const numberOfLines=getNumberOfLines();
+        // console.log("lines :", numberOfLines);
+    
+        const bet=getBet(balance,numberOfLines);
+        // console.log("bet :", bet);
+    
+        const reel=spin();
+        // console.log(reel);
+        const rows=transpose(reel);
+        console.log(rows);
+        printRow(rows);
+        const winnings=getWinning(rows,bet,numberOfLines)
+        console.log("You Won : $",winnings)
+        if(winnings==0){
+            balance=balance+winnings-(bet*numberOfLines);
+        }else{
+            balance=balance+winnings;
+        }
+        
+        console.log("curent balance :",balance);
 
-const numberOfLines=getNumberOfLines();
-// console.log("lines :", numberOfLines);
+        playAgain =prompt("do you want to keep on playing (y/n)? ");
+        if (playAgain=='n')break;
+    }
+    console.log("END OF GAME")
 
-const bet=getBet(balance,numberOfLines);
-// console.log("bet :", bet);
+}
 
-const reel=spin();
-// console.log(reel);
-const rows=transpose(reel);
-console.log(rows);
-printRow(rows);
-const winnings=getWinning(rows,bet,numberOfLines)
-console.log("You Won : $",winnings)
+game();
